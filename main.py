@@ -7,35 +7,41 @@
 пробелов или символами конца строки.*      
 
 """
+import random
+
 #Создаём пустой список для хранения строк
-string_list=[]
+string_list = []
 
-#Создаём пусто список для хранения объединенных слов
-split_list=[]
+#Создаём пустой список для хранения объединенных слов
+split_list = []
 
-#Просим пользователя ввести строку
-number_of_string = int(input("Введите количество строк "))
+#Просим пользователя ввести количество строк
+max_number_of_string = int(input("Введите максимальное количество строк: "))
 
 #Проверка на корректность введённых данных
-if number_of_string <= 0:
-        print("Введено неверное значение")
+if max_number_of_string <= 0:
+    print("Введено неверное значение")
 else:
+    #Генерируем случайное количество строк от 1 до number_of_string
+    number_of_string = random.randint(1, max_number_of_string)
+    print(f"Случайно выбрано количество строк для ввода: {number_of_string}")
+
     for i in range(number_of_string):
         #Просим пользователя ввести сами строки и добавляем в список string_list
         string_list.append(input(f"Введите вашу строку, стоящую под индексом {i}: "))
 
-#Объединяем все строки в одну с пробелами между ними
-merged_string = " ".join(string_list)  
+    #Объединяем все строки в одну с пробелами между ними
+    merged_string = " ".join(string_list)
 
-#Разбиваем строки на слова
-list_split = merged_string.split()      
+    #Разбиваем строки на слова
+    list_split = merged_string.split()
 
-#Подсчитываем количество слов в строке 
-len_of_string = len(list_split)               
+    #Подсчитываем количество слов в строке
+    len_of_string = len(list_split)
 
-#Подсчитываем универсальные слова в строке
-universal = len(set(list_split))          
+    #Подсчитываем универсальные слова в строке
+    universal = len(set(list_split))
 
-#Выводим результат
-print(f"Количество слов в строке: {len_of_string}")
-print(f"Количество универсальных значений: {universal}")
+    # Выводим результат
+    print(f"Количество слов в строке: {len_of_string}")
+    print(f"Количество универсальных значений: {universal}")
